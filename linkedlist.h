@@ -12,8 +12,9 @@ public:
 
 	linkedlist();
 	bool isEmpty();
-	void push(int val);
-	void pop();
+	void insert(int val);
+	void Sortingindescending();
+	void Sortinginascending();
 	void display();
 };
 

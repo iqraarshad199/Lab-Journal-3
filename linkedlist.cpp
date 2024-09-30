@@ -16,30 +16,70 @@ bool linkedlist::isEmpty() {
 	return head == nullptr; 
 }
 
-void linkedlist::push(int val) {
+void linkedlist::insert(int val) {
 	/**
  * Function to insert a new node at the top of the list.
- * val indicates that the value to be stored in the new node.
+ * val indicates that The value to be stored in the new node.
+ * Newnode with given value will be inserted. Update head with newnode.
  */
 	Node* newnode = new Node;
 	newnode->data = val;
 	newnode->next = head;
 	head = newnode;
+
 }
 
-void linkedlist::pop() {
+void linkedlist::Sortinginascending() {
 	/**
- * Function to remove a node from the top of the list.
- * If the list is empty, it prints a message indicating so.
+ * Function to sort nodes of the list in ascending order.
+ * This function uses a bubble sort algorithm to compare each pair of nodes.
+ * If current node's data is greater than next node's data, their values are swapped.
  */
-	Node* temp = head;
 	if (isEmpty()) {
 		cout << "List is Empty." << endl;
 	}
-	else {
 
-		head = head->next;
-		delete temp;
+	Node* current = head;
+	Node* temp;
+	while (current != nullptr) {
+		temp = current->next;
+
+		while (temp != nullptr) {
+			if (current->data > temp->data) {
+				int ptr = current->data;
+				current->data = temp->data;
+				temp->data = ptr;
+			}
+			temp = temp->next;
+		}
+		current = current->next;
+	}
+}
+void linkedlist::Sortingindescending() {
+	/**
+ * Function to sort nodes of the list in descending order.
+ * This function also uses a bubble sort algorithm but swaps values
+ * when current node's data is less than next node's data.
+ */
+
+	if (isEmpty()) {
+		cout << "List is Empty." << endl;
+	}
+
+	Node* current = head;
+	Node* temp;
+	while (current != nullptr) {
+		temp = current->next;
+
+		while (temp != nullptr) {
+			if (current->data < temp->data) {
+				int ptr = current->data;
+				current->data = temp->data;
+				temp->data = ptr;
+			}
+			temp = temp->next;
+		}
+		current = current->next;
 	}
 }
 
